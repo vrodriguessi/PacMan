@@ -5,7 +5,7 @@ import greenfoot.*;
  * @author (Veronica Rodrigues da Silva França, Petrus Damasceno, João Pedro Dos Reis Moura) 
  * @version (2023.10.31)
  */
-public class Cenario1 extends World
+public class Cenario extends World
 {
     private Placar placar;
     private int qtdComida = 0;
@@ -28,7 +28,7 @@ public class Cenario1 extends World
     /**
      * Construtor do cenário
      */
-    public Cenario1(){    
+    public Cenario(){    
         super(600, 400, 1); 
         GreenfootImage backgroundColor = new GreenfootImage(1,1);
         backgroundColor.setColor(Color.WHITE);

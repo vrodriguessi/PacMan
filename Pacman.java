@@ -23,7 +23,7 @@ public class Pacman extends Personagem{
         Actor comida = getOneIntersectingObject(Comida.class);
         if(comida!=null){
             Greenfoot.playSound("comer.mp3");
-            Cenario1 cenario = (Cenario1) getWorld();
+            Cenario cenario = (Cenario) getWorld();
             cenario.removeObject(comida);
             cenario.contarComida();
          }
@@ -66,7 +66,7 @@ public class Pacman extends Personagem{
         if(vidas == 0){
             estaVivo = false;
             Greenfoot.playSound("morreu.mp3");
-            Cenario1 cenario = (Cenario1) getWorld();
+            Cenario cenario = (Cenario) getWorld();
             cenario.fimDeJogo();
         }
     }
