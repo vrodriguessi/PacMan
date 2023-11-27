@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=Cenario1
+comment0.target=Cenario
 comment0.text=\r\n\ Cenario\ do\ jogo\ PacMan\r\n\ \r\n\ @author\ (Veronica\ Rodrigues\ da\ Silva\ Fran\u00E7a,\ Petrus\ Damasceno,\ Jo\u00E3o\ Pedro\ Dos\ Reis\ Moura)\ \r\n\ @version\ (2023.10.31)\r\n
 comment1.params=
-comment1.target=Cenario1()
+comment1.target=Cenario()
 comment1.text=\r\n\ Construtor\ do\ cen\u00E1rio\r\n
 comment10.params=
 comment10.target=void\ preencherMapaComComidas()
