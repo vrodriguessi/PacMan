@@ -17,7 +17,7 @@ public class Personagem extends Actor{
     private void moverCima(){
         int novoX = getX();
         int novoY = getY() - velocidade;
-        if (!existeParede(getX(),getY()-20)) {
+        if (!existeParede(1, getX(),getY()-15)) {
             setLocation(novoX, novoY);
         }
     }
@@ -29,7 +29,7 @@ public class Personagem extends Actor{
     private void moverDireita(){
         int novoX = getX() + velocidade;
         int novoY = getY();
-        if (!existeParede(getX()+20, getY())) {
+        if (!existeParede(2, getX()+15, getY())) {
             setLocation(novoX, novoY);
         }
     }
@@ -41,7 +41,7 @@ public class Personagem extends Actor{
     private void moverBaixo(){
         int novoX = getX();
         int novoY = getY() + velocidade;
-        if (!existeParede(getX(), getY()+20)) {
+        if (!existeParede(3, getX(), getY()+15)) {
             setLocation(novoX, novoY);
         }
     }
@@ -53,7 +53,7 @@ public class Personagem extends Actor{
     private void moverEsquerda(){
         int novoX = getX() - velocidade;
         int novoY = getY();
-        if (!existeParede(getX()-20, getY())) {
+        if (!existeParede(4, getX()-15, getY())) {
             setLocation(novoX, novoY);
         }
     }
@@ -61,29 +61,79 @@ public class Personagem extends Actor{
     /**
      * Verifica se há uma parede na próxima posição
      */
-    private boolean existeParede(int x, int y){
+    private boolean existeParede(int opcao, int x, int y){
         Actor parede = getOneObjectAtOffset(x - getX(), y - getY(), Parede.class);
         if(parede!=null){
             return true;
+        }
+        else{
+            switch(opcao){
+                case 1:
+                    for(int i=-15; i<=15; i++){
+                        Actor paredeLateral = getOneObjectAtOffset(x-getX()+i,y-getY()-5-velocidade, Parede.class);
+                        if(paredeLateral!=null){
+                            return true;
+                        }
+                    }
+                    break;
+                    
+                case 2:
+                    for(int i=-15; i<=15; i++){
+                        Actor paredeLateral = getOneObjectAtOffset(x-getX()+5+velocidade,y-getY()+i, Parede.class);
+                        if(paredeLateral!=null){
+                            return true;
+                        }
+                    }
+                    break;
+                
+                case 3:
+                    for(int i=-15; i<=15; i++){
+                        Actor paredeLateral = getOneObjectAtOffset(x-getX()+i,y-getY()+5+velocidade, Parede.class);
+                        if(paredeLateral!=null){
+                            return true;
+                        }
+                    }
+                    break;
+                    
+                case 4:
+                    for(int i=-15; i<=15; i++){
+                        Actor paredeLateral = getOneObjectAtOffset(x-getX()-5-velocidade,y-getY()+i, Parede.class);
+                        if(paredeLateral!=null){
+                            return true;
+                        }
+                    }
+                    break;
+                    
+                default:
+                    break;
+            }
         }
         return false;
     }
 
     /**
-     * Chama o metodo equivalente direção que o personagem irá andar.
+     * Chama o metodo equivalente à seta do teclado para mover o Pacman.
      */
     public void mover(int opcao){
-        if(opcao == 1){
-            moverCima();
-        }
-        else if(opcao == 2){
-            moverDireita();
-        }
-        else if(opcao == 3){
-            moverBaixo();
-        }
-        else if(opcao == 4){
-            moverEsquerda();
+        switch(opcao){
+            case 1:
+                moverCima();
+                break;
+                
+            case 2:
+                moverDireita();
+                break;
+                
+            case 3:
+                moverBaixo();
+                break;
+                
+            case 4:
+                moverEsquerda();
+                break;
+                
+            default:
+                break;
         }
     }
 }

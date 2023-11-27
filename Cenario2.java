@@ -28,8 +28,4 @@ public class Cenario2 extends Cenario
     {
         super();
     }
-    
-    private void prepare(){
-
-    }
 }
