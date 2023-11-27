@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Placar
+comment1.params=
+comment1.target=Placar()
+comment2.params=qtdComida
+comment2.target=int\ contar(int)
+numComments=3

@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=Personagem
+comment0.text=\r\n\ Classe\ geral\ com\ caracter\u00EDsticas\ e\ m\u00E9todos\ comuns\ aos\ personagens\r\n
+comment1.params=velocidade
+comment1.target=Personagem(int)
+comment2.params=
+comment2.target=void\ moverCima()
+comment2.text=\r\n\ Rotaciona\ o\ Pacman,\ verifica\ se\ h\u00E1\ uma\ parede\ e\ caso\ negativo,\r\n\ move\ para\ cima\r\n
+comment3.params=
+comment3.target=void\ moverDireita()
+comment3.text=\r\n\ Rotaciona\ o\ Pacman,\ verifica\ se\ h\u00E1\ uma\ parede\ e\ caso\ negativo,\r\n\ move\ para\ direita\r\n
+comment4.params=
+comment4.target=void\ moverBaixo()
+comment4.text=\r\n\ Rotaciona\ o\ Pacman,\ verifica\ se\ h\u00E1\ uma\ parede\ e\ caso\ negativo,\r\n\ move\ para\ baixo\r\n
+comment5.params=
+comment5.target=void\ moverEsquerda()
+comment5.text=\r\n\ Rotaciona\ o\ Pacman,\ verifica\ se\ h\u00E1\ uma\ parede\ e\ caso\ negativo,\r\n\ move\ para\ esquerda\r\n
+comment6.params=x\ y
+comment6.target=boolean\ existeParede(int,\ int)
+comment6.text=\r\n\ Verifica\ se\ h\u00E1\ uma\ parede\ na\ pr\u00F3xima\ posi\u00E7\u00E3o\r\n
+comment7.params=opcao
+comment7.target=void\ mover(int)
+comment7.text=\r\n\ Chama\ o\ metodo\ equivalente\ dire\u00E7\u00E3o\ que\ o\ personagem\ ir\u00E1\ andar.\r\n
+numComments=8
