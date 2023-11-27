@@ -8,10 +8,10 @@ public class Pacman extends Personagem{
     private boolean estaVivo;
     
     /**
-     * Cria um Pacman com velocidade fixa de 3.
+     * Cria um Pacman com velocidade fixa de 6.
      */
     public Pacman(){
-        super(6);
+        super(4);
         estaVivo = true;
         vidas = 3;
     }
@@ -38,7 +38,7 @@ public class Pacman extends Personagem{
         if (fantasma != null) {
             int x = Greenfoot.getRandomNumber(600);
             int y = Greenfoot.getRandomNumber(400);
-            setLocation(580, 380); //Volta o pacman para a posição inicial
+            setLocation(580, 375); //Volta o pacman para a posição inicial
             mortes();
             removerCoracao();
             }
@@ -71,12 +71,7 @@ public class Pacman extends Personagem{
         }
     }
     
-    /**
-     * Método para realizar a movimentação do PacMan
-     */
-    
     public int moverPacman(){
-        int opcao = 0;
         if(Greenfoot.isKeyDown("up")){
             setRotation(-90);
             return 1;

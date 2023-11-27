@@ -2,11 +2,11 @@ import greenfoot.*;
 
 public class Fantasma extends Personagem{
     int timer = 100;
-    int intervaloMudanca = 10; // Intervalo de tempo para a mudança de direção (ajuste conforme necessário)
+    int intervaloMudanca = 15; // Intervalo de tempo para a mudança de direção (ajuste conforme necessário)
     int direcao;
     
     public Fantasma(){
-        super(8);
+        super(5);
         String[] coresFantasmas = {"azul", "laranja", "vermelho"};
         int corIndex = Greenfoot.getRandomNumber(coresFantasmas.length);
         String cor = coresFantasmas[corIndex];

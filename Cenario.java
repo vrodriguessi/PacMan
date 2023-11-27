@@ -1,4 +1,5 @@
-import greenfoot.*;
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
 /**
  * Cenario do jogo PacMan
  * 
@@ -9,6 +10,8 @@ public class Cenario extends World
 {
     private Placar placar;
     private int qtdComida = 0;
+    // Constante para definir a distância mínima permitida
+    private static final double DISTANCIA_MINIMA = 50;
     
     /**
      * Mapa usado para definir onde as paredes irão ficar
@@ -24,11 +27,11 @@ public class Cenario extends World
         "**..***...**",
         "************",
     };
-    
     /**
      * Construtor do cenário
      */
     public Cenario(){    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         GreenfootImage backgroundColor = new GreenfootImage(1,1);
         backgroundColor.setColor(Color.WHITE);
@@ -43,16 +46,32 @@ public class Cenario extends World
     
     private void adicionarPacman(){
         Pacman pacman = new Pacman();
-        addObject(pacman,580,380);
+        addObject(pacman,580,375);
     }
     
-    private void adicionarFantasmas(int numFantasmas){
+    /**
+     * Metodo para adicionar fantasmas depois de verificar se eles não estão muito próximos ao
+     * local onde o PacMan nasce
+     */
+    private void adicionarFantasmas(int numFantasmas) {
         for (int i = 0; i < numFantasmas; i++) {
             Fantasma fantasma = new Fantasma();
             int[] posicao = gerarPosicaoAleatoria();
+    
+            // Verificar se a posição gerada está muito próxima de (580, 375)
+            while (distanciaEntrePontos(posicao[0], posicao[1], 580, 375) < DISTANCIA_MINIMA) {
+                posicao = gerarPosicaoAleatoria();
+            }
+
             addObject(fantasma, posicao[0], posicao[1]);
         }
     }
+
+    // Método para calcular a distância entre dois pontos
+     private double distanciaEntrePontos(int x1, int y1, int x2, int y2) {
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+    }
+
     
     private void exibirVidas(int numVidas, int X, int Y){
         for (int i = 0; i < numVidas; i++) {
@@ -75,9 +94,9 @@ public class Cenario extends World
         tocarSomAmbiente();
         adicionarPacman();
         adicionarFantasmas(6);
+        preencherMapaComComidas();
         adicionarPlacar();
         exibirVidas(3,100,10);
-        preencherMapaComComidas();
     }
     
     /**
@@ -118,9 +137,6 @@ public class Cenario extends World
         }
     }
     
-    /**
-     * Metodo que coloca as comidas do PacMan no mapa
-     */
     private void preencherMapaComComidas(){
         for (int j = 30; j < 598; j += 50){
             for(int k = 30; k < 400; k += 50){
