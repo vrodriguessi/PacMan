@@ -2,7 +2,7 @@ import greenfoot.*;
 
 public class Fantasma extends Personagem{
     int timer = 100;
-    int intervaloMudanca = 15; // Intervalo de tempo para a mudança de direção (ajuste conforme necessário)
+    int intervaloMudanca = 15; // Intervalo de tempo para a mudança de direção.
     int direcao;
     
     public Fantasma(){
@@ -11,6 +11,16 @@ public class Fantasma extends Personagem{
         int corIndex = Greenfoot.getRandomNumber(coresFantasmas.length);
         String cor = coresFantasmas[corIndex];
         setImage("fantasma-" + cor + ".png");
+    }
+    
+    /**
+     * Metodo para verificar se o fantasma encostou no pacman e, caso positivo, decrementar a vida do pacman.
+     */
+    protected void encostarNoPacman() {
+        Actor pacman = getOneIntersectingObject(Pacman.class);
+        if (pacman != null) {
+            ((Pacman) pacman).decrementaVida();
+        }
     }
     
     /**
@@ -25,5 +35,6 @@ public class Fantasma extends Personagem{
         }
         
         mover(direcao);
+        encostarNoPacman();
     }
 }

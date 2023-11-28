@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=PoderMagico
+comment1.params=
+comment1.target=PoderMagico()
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ mover()
+comment4.params=actor
+comment4.target=boolean\ atingiu(greenfoot.Actor)
+numComments=5

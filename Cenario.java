@@ -15,6 +15,7 @@ public class Cenario extends World
     //a pontuaçao maxima corresponde ao total de pontos obtidos quando o PacMan consegue todas
     //as comidas disponiveis no mapa.
     private static double PONTUACAO_MAXIMA = 960;
+    private App app;
     
     /**
      * Mapa usado para definir onde as paredes irão ficar
@@ -30,19 +31,24 @@ public class Cenario extends World
         "**..**....**",
         "************",
     };
-    private App app;
     private int numeroDaFase;
-
+    private Pacman pacman;
+    
     /**
      * Construtor do cenário
      */
-    public Cenario(){    
+    public Cenario(App app){    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         GreenfootImage backgroundColor = new GreenfootImage(1,1);
         backgroundColor.setColor(Color.WHITE);
         prepare();
         numeroDaFase = 1;
+        this.app = app;
+    }
+    
+    public void act() {
+        app.verificarFimDeJogo();
     }
     
     private void tocarSomAmbiente(){
@@ -163,16 +169,6 @@ public class Cenario extends World
     }
     
     /**
-    * Método para verificar se a pontuação máxima foi alcançada
-    */
-    private void verificarPontuacaoMaxima() {
-    if (placar.obterPontuacaoAtual() >= PONTUACAO_MAXIMA) {
-        app.avancarParaProximaFase();
-    }
-    }
-
-    
-    /**
      * Método que, ao comer toda a comida do mapa, reproduz um som.
      */
     public void contarComida(){
@@ -182,18 +178,7 @@ public class Cenario extends World
         }
     }
     
-    /**
-     * Metodo para fim de jogo
-     */
-    public void fimDeJogo(){
-        app.fimDeJogo();
-    }
-    
-    /**
-     * Metodo para obter o numero da fase
-     */
-    public int obterFase()
-    {
-        return numeroDaFase;
+    public Pacman obterPacman() {
+        return this.pacman;
     }
 }

@@ -29,20 +29,22 @@ public class Pacman extends Personagem{
          }
     }
     
+    public void voltarPosicaoInicial() {
+        setLocation(580, 375);
+    }
+    
+    public int obterVidas()
+    {
+        return vidas;
+    }
+    
     /**
-     * Método que verifica se o PacMan encostou em um fantasma
+     * Metodo para decrementar a vida do pacman
      */
-    private void encostarNoFantasma(){
-        if(estaVivo){
-        Actor fantasma = getOneIntersectingObject(Fantasma.class);
-        if (fantasma != null) {
-            int x = Greenfoot.getRandomNumber(600);
-            int y = Greenfoot.getRandomNumber(400);
-            setLocation(580, 375); //Volta o pacman para a posição inicial
-            mortes();
-            removerCoracao();
-            }
-        }
+    public void decrementaVida() {
+        morreu();
+        removerCoracao();
+        voltarPosicaoInicial();
     }
     
     /**
@@ -59,18 +61,18 @@ public class Pacman extends Personagem{
     }
     
     /**
-     * Método que contabiliza as mortes do PacMan
+     * Método que contabiliza as mortes
      */
-    private void mortes(){
+    private void morreu(){
         vidas--;
         if(vidas == 0){
             estaVivo = false;
-            Greenfoot.playSound("morreu.mp3");
-            Cenario cenario = (Cenario) getWorld();
-            cenario.fimDeJogo();
         }
     }
     
+    /**
+     * Metodo para fazer a movimentação
+     */
     public int moverPacman(){
         if(Greenfoot.isKeyDown("up")){
             setRotation(-90);
@@ -95,7 +97,6 @@ public class Pacman extends Personagem{
         if(estaVivo){
             mover(moverPacman());
             comer();
-            encostarNoFantasma();
         }
     }
 }

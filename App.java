@@ -9,7 +9,7 @@ import greenfoot.*;
 public class App  
 {
     private Cenario cenarioAtual;
-    private World world;  // Adiciona uma instância de World para manipular o mundo
+    private World world;
     private TelaInicial telaInicial;
 
     public App() {
@@ -24,15 +24,18 @@ public class App
         telaInicial = new TelaInicial();
         world = telaInicial;
         Greenfoot.setWorld(world);
+        cenarioAtual = new Cenario(this);
     }
+
     
     /**
      * Método para iniciar a primeira fase
      */ 
-    private void iniciarFase1() {
-        cenarioAtual = new Cenario();
-        world = cenarioAtual;  // Define 'world' como o mundo atual
-        Greenfoot.setWorld(world);  // Define o mundo no Greenfoot
+    protected void iniciarFase1() 
+    {
+        cenarioAtual = new Cenario(this);
+        world = cenarioAtual;  
+        Greenfoot.setWorld(world); 
     }
 
     /**
@@ -42,26 +45,24 @@ public class App
         
     }
 
-    private void iniciarFase2() {
-        cenarioAtual = new Cenario2();
-        world = cenarioAtual;  
-        Greenfoot.setWorld(world);
-    }
-
     /**
      * Método para reiniciar a fase atual
      */
     private void reiniciarFaseAtual() {
-        cenarioAtual = new Cenario();
+        cenarioAtual = new Cenario(this);
         world = cenarioAtual;
         Greenfoot.setWorld(world);
     }
+    
+    public void verificarFimDeJogo() {
+        if (cenarioAtual.obterPacman().obterVidas() == 0) {
+            fimDeJogo(world);
+        }
+    }
 
-    /**
-     * Método para lidar com o fim do jogo
-     */
-    public void fimDeJogo(){
-        world.addObject(new GameOver(), world.getWidth() / 2, world.getHeight() / 2);
+    public void fimDeJogo(World world){
+        GameOver gameOver = new GameOver();
+        world.addObject(gameOver, world.getWidth() / 2, world.getHeight() / 2);
     }
 
     public static void main(String[] args) {

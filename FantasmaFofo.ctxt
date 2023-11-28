@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=FantasmaFofo
+comment1.params=
+comment1.target=FantasmaFofo()
+comment2.params=
+comment2.target=void\ atirar()
+comment2.text=\r\n\ Metodo\ para\ que\ o\ fantasma\ fofo\ atire\ sempre\ que\ o\ numero\ randomico\ for\ maior\ que\ 50.\r\n
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ encostarNoPacman()
+comment4.text=\r\n\ Metodo\ sobrescrito\ da\ classe\ Fantasma,\ que\ decrementa\ a\ vida\ do\ Pacman\ se\ encostar\ no\ PoderMagico\r\n
+numComments=5

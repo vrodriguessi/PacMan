@@ -1,21 +1,20 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class TelaInicial here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class TelaInicial extends World
-{
+public class TelaInicial extends World {
+    private BotaoStart botaoStart;
 
-    /**
-     * Constructor for objects of class TelaInicial.
-     * 
-     */
-    public TelaInicial()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    public TelaInicial() {    
         super(600, 400, 1); 
+        botaoStart = new BotaoStart();
+        addObject(botaoStart, getWidth() / 2, getHeight() / 2);
+    }
+
+    public class BotaoStart extends Actor {
+        public void act() {
+            if (Greenfoot.mouseClicked(this)) {
+                App app = new App();
+                app.iniciarFase1();
+            }
+        }
     }
 }
