@@ -13,4 +13,8 @@ public class Placar extends Actor{
         setImage(new GreenfootImage("Pontos: " + pontos, 20, Color.WHITE, null));
         return --qtdComida;
     }
+    
+    public int obterPontuacaoAtual() {
+        return pontos;
+    }
 }

@@ -1,21 +1,21 @@
 #BlueJ class context
 comment0.target=Pacman
-comment0.text=\r\n\ \r\n
+comment0.text=\n\ \n
 comment1.params=
 comment1.target=Pacman()
-comment1.text=\r\n\ Cria\ um\ Pacman\ com\ velocidade\ fixa\ de\ 6.\r\n
+comment1.text=\n\ Cria\ um\ Pacman\ com\ velocidade\ fixa\ de\ 6.\n
 comment2.params=
 comment2.target=void\ comer()
-comment2.text=\r\n\ Remove\ a\ comida\ do\ mapa\ e\ conta\ \u00E0\ medida\ que\ o\ Pacman\ passa\ por\ elas.\r\n
+comment2.text=\n\ Remove\ a\ comida\ do\ mapa\ e\ conta\ \u00E0\ medida\ que\ o\ Pacman\ passa\ por\ elas.\n
 comment3.params=
 comment3.target=void\ encostarNoFantasma()
-comment3.text=\r\n\ M\u00E9todo\ que\ verifica\ se\ o\ PacMan\ encostou\ em\ um\ fantasma\r\n
+comment3.text=\n\ M\u00E9todo\ que\ verifica\ se\ o\ PacMan\ encostou\ em\ um\ fantasma\n
 comment4.params=
 comment4.target=void\ removerCoracao()
-comment4.text=\r\n\ M\u00E9todo\ para\ remover\ as\ imagens\ de\ cora\u00E7\u00E3o(vidas)\ quando\ o\ pacman\ toca\r\n\ o\ fantasma\r\n
+comment4.text=\n\ M\u00E9todo\ para\ remover\ as\ imagens\ de\ cora\u00E7\u00E3o(vidas)\ quando\ o\ pacman\ toca\n\ o\ fantasma\n
 comment5.params=
 comment5.target=void\ mortes()
-comment5.text=\r\n\ M\u00E9todo\ que\ contabiliza\ as\ mortes\ do\ PacMan\r\n
+comment5.text=\n\ M\u00E9todo\ que\ contabiliza\ as\ mortes\ do\ PacMan\n
 comment6.params=
 comment6.target=int\ moverPacman()
 comment7.params=

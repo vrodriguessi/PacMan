@@ -10,23 +10,29 @@ public class Cenario extends World
 {
     private Placar placar;
     private int qtdComida = 0;
-    // Constante para definir a distância mínima permitida
+    // Constante para definir a distância mínima permitida para os fantasmas nascerem(longe do PacMan).
     private static final double DISTANCIA_MINIMA = 50;
+    //a pontuaçao maxima corresponde ao total de pontos obtidos quando o PacMan consegue todas
+    //as comidas disponiveis no mapa.
+    private static double PONTUACAO_MAXIMA = 960;
     
     /**
      * Mapa usado para definir onde as paredes irão ficar
      */
     String[] mapa = {
         "************",
-        "*..**...****",
-        "*.**.**..***",
-        "*..**...****",
-        "**..*****..*",
-        "*.**..***..*",
-        "*.***..**..*",
-        "**..***...**",
+        "*..**...**..",
+        "..**.**..*..",
+        "...**...****",
+        "...***..*..*",
+        "*.**..***...",
+        "*..**..**...",
+        "**..**....**",
         "************",
     };
+    private App app;
+    private int numeroDaFase;
+
     /**
      * Construtor do cenário
      */
@@ -36,6 +42,7 @@ public class Cenario extends World
         GreenfootImage backgroundColor = new GreenfootImage(1,1);
         backgroundColor.setColor(Color.WHITE);
         prepare();
+        numeroDaFase = 1;
     }
     
     private void tocarSomAmbiente(){
@@ -67,12 +74,16 @@ public class Cenario extends World
         }
     }
 
-    // Método para calcular a distância entre dois pontos
+    /**
+     * Metodo para calcular a distancia entre dois pontos.
+     */
      private double distanciaEntrePontos(int x1, int y1, int x2, int y2) {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
-
     
+    /**
+     * Metodo para exibir as vidas que o PacMan tem.
+     */
     private void exibirVidas(int numVidas, int X, int Y){
         for (int i = 0; i < numVidas; i++) {
             Vidas vidas = new Vidas();
@@ -81,13 +92,16 @@ public class Cenario extends World
         }
     }
     
+    /**
+     * Adiciona o placar ao cenario.
+     */
     private void adicionarPlacar(){
         placar = new Placar();
         addObject(placar,50,10);
     }
     
-        /**
-     * Prepara o cenário
+    /**
+    * Prepara o cenário
     */
     private void prepare(){
         desenharMapa();
@@ -149,6 +163,16 @@ public class Cenario extends World
     }
     
     /**
+    * Método para verificar se a pontuação máxima foi alcançada
+    */
+    private void verificarPontuacaoMaxima() {
+    if (placar.obterPontuacaoAtual() >= PONTUACAO_MAXIMA) {
+        app.avancarParaProximaFase();
+    }
+    }
+
+    
+    /**
      * Método que, ao comer toda a comida do mapa, reproduz um som.
      */
     public void contarComida(){
@@ -158,7 +182,18 @@ public class Cenario extends World
         }
     }
     
+    /**
+     * Metodo para fim de jogo
+     */
     public void fimDeJogo(){
-        addObject(new GameOver(), getWidth()/2, getHeight()/2);
+        app.fimDeJogo();
+    }
+    
+    /**
+     * Metodo para obter o numero da fase
+     */
+    public int obterFase()
+    {
+        return numeroDaFase;
     }
 }

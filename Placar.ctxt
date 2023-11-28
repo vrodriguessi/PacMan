@@ -4,4 +4,6 @@ comment1.params=
 comment1.target=Placar()
 comment2.params=qtdComida
 comment2.target=int\ contar(int)
-numComments=3
+comment3.params=
+comment3.target=int\ obterPontuacaoAtual()
+numComments=4
