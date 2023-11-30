@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=App
+comment0.text=\r\n\ \r\n
+comment1.params=
+comment1.target=App()
+comment2.params=
+comment2.target=void\ iniciar()
+comment2.text=\r\n\ Metodo\ para\ iniciar\ o\ jogo\r\n
+comment3.params=
+comment3.target=void\ iniciarFase1()
+comment3.text=\r\n\ M\u00E9todo\ para\ iniciar\ a\ primeira\ fase\r\n
+comment4.params=
+comment4.target=void\ avancarNoJogo()
+comment4.text=\r\n\ M\u00E9todo\ para\ avan\u00E7ar\ para\ a\ pr\u00F3xima\ fase\r\n
+comment5.params=
+comment5.target=void\ reiniciarFaseAtual()
+comment5.text=\r\n\ M\u00E9todo\ para\ reiniciar\ a\ fase\ atual\r\n
+comment6.params=
+comment6.target=void\ verificarFimDeJogo()
+comment7.params=world
+comment7.target=void\ fimDeJogo(greenfoot.World)
+comment8.params=args
+comment8.target=void\ main(java.lang.String[])
+numComments=9
