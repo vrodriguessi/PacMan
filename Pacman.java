@@ -76,21 +76,21 @@ public class Pacman extends Personagem{
     public int moverPacman(){
         if(Greenfoot.isKeyDown("up")){
             setRotation(-90);
-            return 1;
+            return 0;
         }
         else if(Greenfoot.isKeyDown("right")){
             setRotation(0);
-            return 2;
+            return 1;
         }
         else if(Greenfoot.isKeyDown("down")){
             setRotation(90);
-            return 3;
+            return 2;
         }        
         else if(Greenfoot.isKeyDown("left")){
             setRotation(180);
-            return 4;
+            return 3;
         }
-        return 0;
+        return 5;
     }
     
     public void act(){

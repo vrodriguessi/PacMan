@@ -1,13 +1,9 @@
 import greenfoot.*;
 
 /**
- * Write a description of class Controlador here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
-public class App  
-{
+public class App {
     private Cenario cenarioAtual;
     private World world;
     private TelaInicial telaInicial;
@@ -24,16 +20,15 @@ public class App
         telaInicial = new TelaInicial();
         world = telaInicial;
         Greenfoot.setWorld(world);
-        cenarioAtual = new Cenario(this);
+        cenarioAtual = new Fase1();
+        iniciarFase1();
     }
 
-    
     /**
      * Método para iniciar a primeira fase
      */ 
     protected void iniciarFase1() 
     {
-        cenarioAtual = new Cenario(this);
         world = cenarioAtual;  
         Greenfoot.setWorld(world); 
     }
@@ -49,7 +44,6 @@ public class App
      * Método para reiniciar a fase atual
      */
     private void reiniciarFaseAtual() {
-        cenarioAtual = new Cenario(this);
         world = cenarioAtual;
         Greenfoot.setWorld(world);
     }

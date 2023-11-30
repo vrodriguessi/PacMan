@@ -116,19 +116,19 @@ public class Personagem extends Actor{
      */
     public void mover(int opcao){
         switch(opcao){
-            case 1:
+            case 0:
                 moverCima();
                 break;
                 
-            case 2:
+            case 1:
                 moverDireita();
                 break;
                 
-            case 3:
+            case 2:
                 moverBaixo();
                 break;
                 
-            case 4:
+            case 3:
                 moverEsquerda();
                 break;
                 

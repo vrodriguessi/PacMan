@@ -1,28 +1,29 @@
 import greenfoot.*;
 
 public class PoderMagico extends Actor {
-    private boolean acertou;
     private int velocidadeX = 3;
 
     public PoderMagico() {
-        this.acertou = false;
+        super();
+        setImage("poder-magico.png");
     }
 
     public void act() {
-        if (!acertou) {
-            mover();
+        mover();
+        encostarNoPacman();
         }
-    }
 
     private void mover() {
         setLocation(getX() + velocidadeX, getY());
     }
-
-    public boolean atingiu(Actor actor) {
-        if (this.isTouching(actor.getClass())) {
-            this.acertou = true;
-            return true;
+    
+    /**
+     * Metodo que decrementa a vida do Pacman se encostar no PoderMagico
+     */
+    protected void encostarNoPacman() {
+        Pacman pacman = (Pacman) getOneIntersectingObject(Pacman.class);
+        if (pacman != null) {
+            pacman.decrementaVida();
         }
-        return false;
     }
 }

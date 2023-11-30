@@ -15,40 +15,18 @@ public class Cenario extends World
     //a pontuaçao maxima corresponde ao total de pontos obtidos quando o PacMan consegue todas
     //as comidas disponiveis no mapa.
     private static double PONTUACAO_MAXIMA = 960;
-    private App app;
     
-    /**
-     * Mapa usado para definir onde as paredes irão ficar
-     */
-    String[] mapa = {
-        "************",
-        "*..**...**..",
-        "..**.**..*..",
-        "...**...****",
-        "...***..*..*",
-        "*.**..***...",
-        "*..**..**...",
-        "**..**....**",
-        "************",
-    };
     private int numeroDaFase;
     private Pacman pacman;
     
     /**
      * Construtor do cenário
      */
-    public Cenario(App app){    
+    public Cenario(){    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
         GreenfootImage backgroundColor = new GreenfootImage(1,1);
-        backgroundColor.setColor(Color.WHITE);
-        prepare();
-        numeroDaFase = 1;
-        this.app = app;
-    }
-    
-    public void act() {
-        app.verificarFimDeJogo();
+        backgroundColor.setColor(Color.BLACK);
     }
     
     private void tocarSomAmbiente(){
@@ -67,18 +45,33 @@ public class Cenario extends World
      * local onde o PacMan nasce
      */
     private void adicionarFantasmas(int numFantasmas) {
-        for (int i = 0; i < numFantasmas; i++) {
-            Fantasma fantasma = new Fantasma();
-            int[] posicao = gerarPosicaoAleatoria();
-    
-            // Verificar se a posição gerada está muito próxima de (580, 375)
-            while (distanciaEntrePontos(posicao[0], posicao[1], 580, 375) < DISTANCIA_MINIMA) {
-                posicao = gerarPosicaoAleatoria();
-            }
+    for (int i = 0; i < numFantasmas; i++) {
+        Fantasma fantasma = null;
+        int tipoFantasma = Greenfoot.getRandomNumber(3);
+        switch (tipoFantasma) {
+            case 0:
+                fantasma = new FantasmaAzul();
+                break;
+            case 1:
+                fantasma = new FantasmaVermelho();
+                break;
+            case 2:
+                fantasma = new FantasmaLaranja();
+                break;
+            default:
+                break;
+        }
+        int[] posicao = gerarPosicaoAleatoria();
 
-            addObject(fantasma, posicao[0], posicao[1]);
+        // Verificar se a posição gerada está muito próxima de (580, 375)
+        while (distanciaEntrePontos(posicao[0], posicao[1], 580, 375) < DISTANCIA_MINIMA) {
+            posicao = gerarPosicaoAleatoria();
+        }
+
+        addObject(fantasma, posicao[0], posicao[1]);
         }
     }
+
 
     /**
      * Metodo para calcular a distancia entre dois pontos.
@@ -109,11 +102,11 @@ public class Cenario extends World
     /**
     * Prepara o cenário
     */
-    private void prepare(){
-        desenharMapa();
+    public void prepare(String[] mapa, int quantidadeDeFantasmas){
+        desenharMapa(mapa);
         tocarSomAmbiente();
         adicionarPacman();
-        adicionarFantasmas(6);
+        adicionarFantasmas(quantidadeDeFantasmas);
         preencherMapaComComidas();
         adicionarPlacar();
         exibirVidas(3,100,10);
@@ -139,7 +132,7 @@ public class Cenario extends World
      * Método que desenha o mapa de acordo com a String mapa, cada * é o local
      * onde deve ser colocada uma parede.
      */
-    private void desenharMapa(){
+    private void desenharMapa(String[] mapa){
         for(int i = 0; i <mapa.length; i++){
             String linhaDoMapa = mapa[i];
             for(int j = 0; j <linhaDoMapa.length(); j++){
